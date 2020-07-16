@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Learning jQuery</title>
+
+      <style>
+         .box{
+            height: 100px;
+            width: 400px;
+            background: green;
+            padding: 10px;
+         }
+         .blue {
+            background-color: dodgerblue;
+         }
+         .orange {
+            background-color: orangered;
+            height: 100px;
+            width: 420px;
+            text-align: center;
+            font-weight: bolder;
+            padding-top: 30px;
+         }
+         .switch {
+            background: pink;
+         }
+         .sample{
+            position: relative;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            background-color: aqua;
+         }
+         
+      </style>
+      <link rel="stylesheet" href="css/reset.css">
+      <link rel="stylesheet" href="css/style.css">
+      <script src="js/jquery-3.4.1.js"></script>
+   </head>
+
+   <body>
+      <h1>Learning jQuery</h1>
+      <!--<form>
+         <div><input type="text" placeholder="First Name" required></div>
+         <div><input type="text" placeholder="Last Name"></div>
+         <div><input type="text" placeholder="Email" required></div>
+         <div><input type="text" placeholder="Age"></div>
+         <div><input type="passowrd" placeholder="Passowrd" required></div>
+         <button>Sign up</button>
+      </form>-->
+      
+      <!--<div class="box">
+         <button class="switch">click me</button>
+      </div>-->
+      
+      <!--<div id="example" class="box">
+         <select id="places">
+            <option value="">Pick your Destination</option>
+            <option value="New Delhi" data-fuel="60">New Delhi</option>
+            <option value="Lucknow" data-fuel="140">Lucknow</option>
+            <option value="Mumbai" data-fuel="270">Mumbai</option>
+            <option value="Goa" data-fuel="350">Goa</option>
+            <option value="Banglore" data-fuel="650">Banglore</option>
+         </select>-->
+         <!--<button>Select</button>
+         
+         <input type="text">
+      </div>
+      <br>
+      <div id="result" class="orange"></div>-->
+      <!--<div id="add-container">
+            <input type="text" />
+            <button>Add</button>
+        </div>
+
+        <div id="places-container">
+            <div class="item">
+                <div class="remove">X</div>
+                Paris
+            </div>
+            <div class="item">
+                <div class="remove">X</div>
+                Brisbane
+            </div>
+            <div class="item">
+                <div class="remove">X</div>
+                Lima
+            </div>
+            <div class="item">
+                <div class="remove">X</div>
+                Nairobi
+            </div>
+        </div>-->
+      <!--<div class="item-box" data-price="199">
+        	<img src="https://images.unsplash.com/photo-1548429930-163885742a36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=150&q=80" />
+        	<div class="item-title">Bahía Inglesa</div>
+        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        	<div class="item-price">$199</div>
+        	<button>Add to cart</button>
+            <div>
+        	   <a href="#" class="info-link">More info</a>
+        	</div>
+            <div class="more-info">
+                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem</p>
+        	</div>
+        </div>-->
+      
+      <div id="example1" class="sample"></div>
+      <div id="example2" class="sample"></div>
+      <div id="example3" class="sample"></div>
+      
+      
+      <script type="text/javascript">
+         $(document).ready(function(){
+            /**********************************Attribute Selector*********
+            
+            // Selecting by attribute
+            //$("input[required]").addClass('orange');
+            
+            // Selecting by attribute value
+            $("input[placeholder=Email]").addClass('blue');
+            
+            // Selecting by attribute value that contains specific a 'word'
+            $("input[placeholder*=Name]").addClass('orange');
+            
+            ********************************************************/
+            
+            /*------Working with EVENTs------*/
+            /*$('.box').on('click', function(){
+               //console.log(this); // prints the html code
+               // to covert it to jQuery object
+               $(this).toggleClass('orange');
+            });*/
+            
+            // Event Delegation - attaching event to the parent instead actual event
+           /* $('.box').on('click', 'button.switch', function(e){
+               console.log(e.target);
+               console.log($(this));
+               $(this).parent().toggleClass('orange');
+            });*/
+            
+            // Event on select List
+            /*$("#example").on('click', 'button', function(){
+               var selected = $("#places option:selected");
+               var value = selected.val();
+               var fuel = selected.attr('data-fuel'); // both work the same way
+               //var fuel = selected.data('fuel');
+               if(value){
+                  $("#result").html(value + ' - ' + fuel + 'L');
+               }
+            });*/
+            
+            // Change Event
+            /*$("#example").on('change', 'select', function(){
+               var selected = $(this).find('option:selected');
+               var value = selected.val();
+               var fuel = selected.data('fuel');
+               if(value){
+                  $("#result").html(value + ' - ' + fuel + 'L');
+               }
+            });*/
+            
+            // Keyboard Events
+            /*$("#example").on("keyup", "input", function(e){
+                 console.log($(this).val());
+                 //console.log(e.key, e.keyCode);
+               $("#result").html('Value: '+$(this).val());
+            });*/
+            
+            /*---------DOM Manipulation---- append() and  prepend()---------
+                $("#add-container").on("click", "button", function(e){
+                    var city = $('#add-container input').val();
+
+                    var content = `<div class="item">
+                            <div class="remove">X</div>
+                            ${city}
+                        </div>`
+                    //$("#places-container").append(content);
+                    //$(content).appendTo("#places-container");
+                   
+                   //$(content).prependTo("#places-container");
+                    $("#places-container").prepend(content);
+                });
+            */
+            
+            /*---------DOM Manipulation---- before() and  after()--------
+                $("#add-container").on("click", "button", function(e){
+                    var city = $('#add-container input').val();
+
+                    var content = `<div class="item">
+                            <div class="remove">X</div>
+                            ${city}
+                        </div>`;
+                    $("#places-container").children().first().before(content);
+                    //$("#places-container").children().last().after(content);
+                });
+            -*/
+            
+            /*---------DOM Manipulation---- remove() an element--------
+                $("#add-container").on("click", "button", function(e){
+                    var city = $('#add-container input').val();
+
+                    var content = `<div class="item">
+                            <div class="remove">X</div>
+                            ${city}
+                        </div>`;
+                    $("#places-container").children().first().before(content);
+                   // This is not gonna work for the new elements which were not present at the DOM Loading time
+                   //$('#places-container .remove').on('click', function(){
+                      //$(this).parent().remove();
+                   //});
+                   
+                   // But by using Event Delegation we can achieve the solution
+                   $('#pla ces-container').on('click', '.remove', function(){
+                      $(this).parent().remove();
+                   });
+                   
+                });
+            */
+            /*---------DOM Manipulation---- remove() an element--------
+                $(".item-box").on("click", "a.info-link", function(e){
+                     e.preventDefault();
+                     //$(this).closest('.item-box').find('.more-info').toggle('slow');
+                     $(this).closest('.item-box').find('.more-info').slideToggle('slow');
+                });
+            */
+            /*---------DOM Manipulation---- animate() an element--------*/
+               $("#example1").on("click", function(){
+                     $(this).animate({
+                        opacity : '-=0.2'
+                     }, 500, function(){
+                        alert('animatation complete');
+                     })
+                });
+               $("#example2").on("click", function(){
+                     $(this).animate({
+                        left : '+=20',
+                        width : '+=50'
+                     }, 500);
+                });
+               $("#example3").on("click", function(){
+                     $(this).animate({
+                        left : '+=20',
+                        width : 50
+                     }, 500);
+                });
+         });
+      </script>
+   </body>
+</html>
